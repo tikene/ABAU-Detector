@@ -19,12 +19,16 @@ blue = Fore.BLUE + bright + dim
 magenta = Fore.MAGENTA + bright + dim
 
 
-LOCATION_URL = 'https://www.edu.xunta.es/CONTINXENCIA_NERTA/index.html'
+LOCATION_URL = "https://www.edu.xunta.es/CONTINXENCIA_NERTA/index.html"
+SOUND_FILE = "bruh.wav"
+DETECTION_STR = "deshabilitado temporalmente"
 DELAY = 10
 
 
 def main():
     os.system("cls")
+    os.system("title Bot notas ABAU")
+
     print(magenta + "\n\n* Bot notas ABAU *\n")
 
     while True:
@@ -45,11 +49,11 @@ def main():
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
 
-        if "deshabilitado temporalmente" in abau.text:
+        if DETECTION_STR in abau.text:
             print(yellow + "Las notas aún no han sido publicadas" + Fore.RESET + " - " + cyan + current_time)
         else:
             print(green + "NOTAS PUBLICADAS!!")
-            playsound("bruh.wav")
+            playsound(SOUND_FILE)
             os.system("msg * Notas ABAU publicadas!")
             break
 
